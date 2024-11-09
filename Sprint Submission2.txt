@@ -1,0 +1,49 @@
+Sprint Submission
+
+1. Overview
+
+This was the first full development sprint for our capstone project. We focused on building foundational features, setting up the project environment, and making progress towards our MVP. At the end of the sprint, I evaluated the outcomes and reflected on areas of improvement. Below are my retrospective answers and updated backlog information.
+
+2. Retrospective Feedback Questions
+
+Q1: What went well this sprint?
+
+I successfully set up the GitHub repositories and linked them with VS Code, streamlining the version control process.
+I effectively organized the project structure and wrote clear user stories for the MVP, which helped guide the development process.
+Using a Kanban board helped track progress efficiently and provided a visual overview of tasks, making it easier to prioritize and focus.
+
+Q2: What did not go well for this sprint?
+
+I encountered issues with the git rebase command, which led to the temporary loss of local files. I managed to resolve this by using git reflog and git reset, but it took time and disrupted progress.
+
+Q3: Did you complete the tasks you planned to complete?
+
+Yes, I completed most of the planned tasks. The UI for the Ohm’s Law Calculator was built with input validation, and the user authentication API was partially implemented. However, the integration of the backend API with the frontend is still in progress and will continue into the next sprint.
+
+Q4: Did you experience any unforeseen technical issues that prevented your progress? Please describe them.
+
+Yes, the primary issue was the git rebase mishap, which caused a temporary setback. Additionally, I faced some challenges with the user authentication API integration, specifically in handling CORS errors during data fetching. I am actively working on fixing these issues.
+
+Q5: Do you feel you are on-track to complete your project?
+
+Yes, I believe I am on track, but I need to address the technical issues quickly to avoid further delays. I will continue refining the development process by conducting more frequent code reviews and testing each feature thoroughly before moving on to the next task.
+
+Q6: What are three stretch goals for the upcoming sprint?
+
+Add a feature to mark specific calculations as favorites for quick access.
+Implement user activity analytics (e.g., tracking the most frequently used calculations).
+Develop multi-language support for the UI to increase the app's accessibility.
+
+Q7: Actual hours you were able to devote this week to the capstone?
+
+I dedicated 24 hours this week to development tasks.
+
+Q8: Have you considered your deployment of the application?
+
+Yes, I have started planning for deployment. I am exploring options like Heroku and Firebase for hosting the backend API. I also plan to use GitHub Actions for Continuous Integration/Continuous Deployment (CI/CD) to streamline the release process.
+
+3. Links to GitHub Repositories
+
+git remote add ui-origin https://github.com/cfree26/ElectroShockPro_UI.git
+
+git remote add services-origin https://github.com/cfree26/ElectroShockPro_Services.git
