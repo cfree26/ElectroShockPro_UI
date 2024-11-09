@@ -1,0 +1,96 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>Voltage Drop Calculator</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">Voltage Drop</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+        <ion-item>
+          <ion-label position="floating">Voltage (V)</ion-label>
+          <ion-input
+            [(ngModel)]="voltage"
+            type="number"
+            placeholder="Enter Voltage"
+          ></ion-input>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col>
+        <ion-item>
+          <ion-label position="floating">Current (I)</ion-label>
+          <ion-input
+            [(ngModel)]="current"
+            type="number"
+            placeholder="Enter Current"
+          ></ion-input>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col>
+        <ion-item>
+          <ion-label position="floating">Length (L) in feet</ion-label>
+          <ion-input
+            [(ngModel)]="length"
+            type="number"
+            placeholder="Enter Length"
+          ></ion-input>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col>
+        <ion-item>
+          <ion-label position="floating"
+            >Resistance (R) in ohms per foot</ion-label
+          >
+          <ion-input
+            [(ngModel)]="resistance"
+            type="number"
+            placeholder="Enter Resistance"
+          ></ion-input>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col>
+        <ion-button expand="block" (click)="calculateVoltageDrop()"
+          >Calculate Voltage Drop</ion-button
+        >
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col>
+        <ion-item>
+          <ion-label color="primary"
+            >Voltage Drop: {{ voltageDrop }} V</ion-label
+          >
+        </ion-item>
+      </ion-col>
+    </ion-row>
+
+    <!-- Clear Button -->
+    <ion-row>
+      <ion-col>
+        <ion-button expand="block" color="medium" (click)="clearFields()"
+          >Clear</ion-button
+        >
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>
