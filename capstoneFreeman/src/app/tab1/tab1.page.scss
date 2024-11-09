@@ -1,0 +1,58 @@
+/* Set the background color for the entire page */
+ion-content {
+    --background: #000; /* Black background */
+    color: #fff; /* White text color for readability */
+  }
+  
+  /* Style the toolbar and header */
+  ion-toolbar {
+    --background: #1a1a1a; /* Dark gray toolbar background */
+    --color: #fff; /* White text for the toolbar */
+  }
+  
+  ion-title {
+    font-weight: bold;
+    font-size: 1.5rem;
+    color: #ff6f00; /* Bright color for the title text to stand out */
+  }
+  
+  /* Style the ion-item and input fields */
+  ion-item {
+    --background: #333; /* Dark gray background for input items */
+    --color: #fff; /* White text */
+    border-radius: 8px;
+    margin: 8px 0;
+  }
+  
+  ion-label {
+    color: #ff6f00; /* Bright color for labels to make them stand out */
+    font-weight: 600;
+  }
+  
+  ion-input {
+    --placeholder-color: #bbb; /* Light gray placeholder text */
+    color: #fff; /* White text for input */
+  }
+  
+  /* Style the buttons */
+  ion-button {
+    --background: #ff6f00; /* Bright orange background for buttons */
+    --background-activated: #ff8f00; /* Slightly lighter shade when activated */
+    --color: #fff; /* White text */
+    font-weight: bold;
+    border-radius: 8px;
+    margin-top: 12px;
+  }
+  
+  /* Style for the result display */
+  ion-item[ngModel="result"] {
+    --background: #1a1a1a; /* Match the toolbar background */
+    --color: #ff6f00; /* Bright color for the result text */
+    font-size: 1.2rem;
+    font-weight: 600;
+    text-align: center;
+    margin-top: 20px;
+    padding: 10px;
+    border-radius: 8px;
+  }
+  
