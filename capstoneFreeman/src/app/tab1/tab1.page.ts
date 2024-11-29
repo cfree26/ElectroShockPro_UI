@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { Haptics, ImpactStyle } from '@capacitor/haptics';
-import { addCalculation } from '../services/database.service';
+import { addCalculation, getAllCalculations } from '../services/database.service';
 
 @Component({
   selector: 'app-ohms-law',
@@ -12,6 +12,7 @@ export class Tab1Page {
   current: string = '';
   resistance: string = '';
   result: string = '';
+  lastThreeCalculations: any[] = []; // Store the last three calculations
 
   constructor() {}
 
@@ -79,6 +80,19 @@ export class Tab1Page {
     } else {
       this.result = 'Please enter valid numbers for Voltage (V) and Current (I).';
     }
+  }
+
+  async showAllCalculations() {
+    const calculations = await getAllCalculations();
+    if (!Array.isArray(calculations) || calculations.length === 0) {
+      console.log('No calculations found.');
+      this.lastThreeCalculations = [];
+      return;
+    }
+
+    // Get the last three calculations
+    this.lastThreeCalculations = calculations.slice(-3).reverse(); // Reverse to show most recent first
+    console.log('Last Three Calculations:', this.lastThreeCalculations);
   }
 
   clearFields() {

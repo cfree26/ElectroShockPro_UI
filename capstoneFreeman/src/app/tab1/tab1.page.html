@@ -12,13 +12,14 @@
   </ion-header>
 
   <ion-grid>
+    <!-- Input Fields -->
     <ion-row>
       <ion-col>
         <ion-item>
           <ion-label position="floating">Voltage (V)</ion-label>
           <ion-input
             [(ngModel)]="voltage"
-            type="text"
+            type="number"
             placeholder="Enter Voltage"
           ></ion-input>
         </ion-item>
@@ -31,7 +32,7 @@
           <ion-label position="floating">Current (I)</ion-label>
           <ion-input
             [(ngModel)]="current"
-            type="text"
+            type="number"
             placeholder="Enter Current"
           ></ion-input>
         </ion-item>
@@ -44,16 +45,17 @@
           <ion-label position="floating">Resistance (R)</ion-label>
           <ion-input
             [(ngModel)]="resistance"
-            type="text"
+            type="number"
             placeholder="Enter Resistance"
           ></ion-input>
         </ion-item>
       </ion-col>
     </ion-row>
 
+    <!-- Calculation Buttons -->
     <ion-row>
       <ion-col>
-        <ion-button expand="block" (click)="calculateVoltage()">
+        <ion-button expand="block" color="primary" (click)="calculateVoltage()">
           Calculate Voltage
         </ion-button>
       </ion-col>
@@ -61,7 +63,7 @@
 
     <ion-row>
       <ion-col>
-        <ion-button expand="block" (click)="calculateCurrent()">
+        <ion-button expand="block" color="primary" (click)="calculateCurrent()">
           Calculate Current
         </ion-button>
       </ion-col>
@@ -69,7 +71,11 @@
 
     <ion-row>
       <ion-col>
-        <ion-button expand="block" (click)="calculateResistance()">
+        <ion-button
+          expand="block"
+          color="primary"
+          (click)="calculateResistance()"
+        >
           Calculate Resistance
         </ion-button>
       </ion-col>
@@ -84,10 +90,59 @@
       </ion-col>
     </ion-row>
 
+    <!-- Show All Calculations Button -->
+    <ion-row>
+      <ion-col>
+        <ion-button
+          expand="block"
+          color="tertiary"
+          (click)="showAllCalculations()"
+        >
+          Show All Calculations
+        </ion-button>
+      </ion-col>
+    </ion-row>
+
+    <!-- Display Last 3 Calculations -->
     <ion-row>
       <ion-col>
         <ion-item>
-          <ion-label color="primary">Result: {{ result }}</ion-label>
+          <ion-label color="tertiary"
+            ><strong>Last 3 Calculations:</strong></ion-label
+          >
+        </ion-item>
+      </ion-col>
+    </ion-row>
+
+    <ion-list *ngIf="lastThreeCalculations.length > 0">
+      <ion-item *ngFor="let calculation of lastThreeCalculations">
+        <ion-label>
+          <h3>{{ calculation.type }}</h3>
+          <p>Voltage: <strong>{{ calculation.voltage }}</strong> V</p>
+          <p>Current: <strong>{{ calculation.current }}</strong> A</p>
+          <p>Resistance: <strong>{{ calculation.resistance }}</strong> Ω</p>
+          <p>Result: {{ calculation.result }}</p>
+          <p>Calculated At: {{ calculation.calculated_at | date:'short' }}</p>
+        </ion-label>
+      </ion-item>
+    </ion-list>
+
+    <!-- Message When No Calculations Are Found -->
+    <ion-row *ngIf="lastThreeCalculations.length === 0">
+      <ion-col>
+        <ion-item>
+          <ion-label color="warning">No calculations available.</ion-label>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+
+    <!-- Display Result -->
+    <ion-row>
+      <ion-col>
+        <ion-item>
+          <ion-label color="primary"
+            ><strong>Result: {{ result }}</strong></ion-label
+          >
         </ion-item>
       </ion-col>
     </ion-row>
