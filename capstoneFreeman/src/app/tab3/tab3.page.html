@@ -12,6 +12,7 @@
   </ion-header>
 
   <ion-grid>
+    <!-- Input Fields -->
     <ion-row>
       <ion-col>
         <ion-item>
@@ -38,18 +39,22 @@
       </ion-col>
     </ion-row>
 
+    <!-- Calculate Button -->
     <ion-row>
       <ion-col>
-        <ion-button expand="block" (click)="calculatePower()"
+        <ion-button expand="block" color="primary" (click)="calculatePower()"
           >Calculate Power</ion-button
         >
       </ion-col>
     </ion-row>
 
+    <!-- Display Power -->
     <ion-row>
       <ion-col>
         <ion-item>
-          <ion-label color="primary">Power: {{ power }} W</ion-label>
+          <ion-label color="primary"
+            ><strong>Power: {{ power }} W</strong></ion-label
+          >
         </ion-item>
       </ion-col>
     </ion-row>
@@ -60,6 +65,49 @@
         <ion-button expand="block" color="medium" (click)="clearFields()"
           >Clear</ion-button
         >
+      </ion-col>
+    </ion-row>
+
+    <!-- Show All Calculations Button -->
+    <ion-row>
+      <ion-col>
+        <ion-button
+          expand="block"
+          color="tertiary"
+          (click)="showAllCalculations()"
+          >Show All Calculations</ion-button
+        >
+      </ion-col>
+    </ion-row>
+
+    <!-- Display Last 3 Calculations -->
+    <ion-row>
+      <ion-col>
+        <ion-item>
+          <ion-label color="tertiary"
+            ><strong>Last 3 Calculations:</strong></ion-label
+          >
+        </ion-item>
+      </ion-col>
+    </ion-row>
+
+    <ion-list *ngIf="lastThreeCalculations.length > 0">
+      <ion-item *ngFor="let calculation of lastThreeCalculations">
+        <ion-label>
+          <h3>{{ calculation.type }}</h3>
+          <p>Voltage: {{ calculation.voltage }} V</p>
+          <p>Current: {{ calculation.current }} A</p>
+          <p>Result: {{ calculation.result }}</p>
+        </ion-label>
+      </ion-item>
+    </ion-list>
+
+    <!-- Message When No Calculations Are Found -->
+    <ion-row *ngIf="lastThreeCalculations.length === 0">
+      <ion-col>
+        <ion-item>
+          <ion-label color="warning">No calculations available.</ion-label>
+        </ion-item>
       </ion-col>
     </ion-row>
   </ion-grid>
