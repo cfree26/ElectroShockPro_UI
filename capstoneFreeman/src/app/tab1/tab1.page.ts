@@ -2,7 +2,6 @@ import { Component } from '@angular/core';
 import { Haptics, ImpactStyle } from '@capacitor/haptics';
 import { addCalculation } from '../services/database.service';
 
-
 @Component({
   selector: 'app-ohms-law',
   templateUrl: './tab1.page.html',
@@ -30,7 +29,6 @@ export class Tab1Page {
         current: this.current,
         resistance: this.resistance,
         result: this.result,
-        calculated_at: new Date().toISOString(),
       });
 
       this.triggerHapticFeedback();
@@ -53,7 +51,6 @@ export class Tab1Page {
         current: this.current,
         resistance: this.resistance,
         result: this.result,
-        calculated_at: new Date().toISOString(),
       });
 
       this.triggerHapticFeedback();
@@ -76,7 +73,6 @@ export class Tab1Page {
         current: this.current,
         resistance: this.resistance,
         result: this.result,
-        calculated_at: new Date().toISOString(),
       });
 
       this.triggerHapticFeedback();

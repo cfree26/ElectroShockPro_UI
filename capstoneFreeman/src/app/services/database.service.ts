@@ -1,9 +1,9 @@
 import Dexie, { Table } from 'dexie';
 
 // Define the interface for Calculation data
-interface Calculation {
+export interface Calculation {
   id?: number; // Optional because it is auto-incremented
-  type: string;
+  type: string; // e.g., "Ohm's Law"
   voltage: string;
   current: string;
   resistance: string;
@@ -28,11 +28,11 @@ export class CalculationsDatabase extends Dexie {
 export const db = new CalculationsDatabase();
 
 // Add a new calculation to the database
-export async function addCalculation(data: Calculation) {
+export async function addCalculation(data: Omit<Calculation, 'calculated_at'>) {
   try {
     const id = await db.calculations.add({
       ...data,
-      calculated_at: new Date().toISOString(), // Ensure calculated_at is a timestamp
+      calculated_at: new Date().toISOString(), // Automatically set the timestamp
     });
     return { id, message: 'Calculation saved successfully.' };
   } catch (error) {
@@ -42,7 +42,7 @@ export async function addCalculation(data: Calculation) {
 }
 
 // Retrieve all calculations from the database
-export async function getAllCalculations() {
+export async function getAllCalculations(): Promise<Calculation[] | { error: string }> {
   try {
     const calculations = await db.calculations.toArray();
     return calculations.length > 0
@@ -55,12 +55,34 @@ export async function getAllCalculations() {
 }
 
 // Retrieve the most recent calculation from the database
-export async function getLastCalculation() {
+export async function getLastCalculation(): Promise<Calculation | { error: string }> {
   try {
     const last = await db.calculations.orderBy('id').last();
     return last || { error: 'No calculations available.' };
   } catch (error) {
     console.error('Error retrieving last calculation:', error);
     return { error: 'Error retrieving last calculation.' };
+  }
+}
+
+// Delete a calculation by ID
+export async function deleteCalculation(id: number): Promise<{ success: boolean; message: string }> {
+  try {
+    await db.calculations.delete(id);
+    return { success: true, message: 'Calculation deleted successfully.' };
+  } catch (error) {
+    console.error('Error deleting calculation:', error);
+    return { success: false, message: 'Failed to delete calculation.' };
+  }
+}
+
+// Clear all calculations from the database
+export async function clearCalculations(): Promise<{ success: boolean; message: string }> {
+  try {
+    await db.calculations.clear();
+    return { success: true, message: 'All calculations cleared successfully.' };
+  } catch (error) {
+    console.error('Error clearing calculations:', error);
+    return { success: false, message: 'Failed to clear calculations.' };
   }
 }
