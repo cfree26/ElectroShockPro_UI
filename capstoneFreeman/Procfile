@@ -1,2 +1,3 @@
 web: bin/start-nginx-solo
 
+web: echo "Running the app with the NGINX buildpack"
