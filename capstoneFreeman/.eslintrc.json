@@ -3,6 +3,10 @@
   "ignorePatterns": [
     "projects/**/*"
   ],
+  "env": {
+    "es2021": true,
+    "node": true
+  },
   "overrides": [
     {
       "files": [
@@ -12,7 +16,9 @@
         "project": [
           "./capstoneFreeman/tsconfig.json"
         ],
-        "createDefaultProgram": true
+        "createDefaultProgram": true,
+        "ecmaVersion": 2022,
+        "sourceType": "module"
       },
       "extends": [
         "plugin:@angular-eslint/recommended",
