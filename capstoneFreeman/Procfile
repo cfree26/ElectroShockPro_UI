@@ -1,4 +1,5 @@
-web: bin/start-nginx
+web: nginx -p /app -c /app/config/nginx.conf
+
 
 
 
