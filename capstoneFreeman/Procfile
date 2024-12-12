@@ -1,4 +1,5 @@
-web: node server.js
+web: serve -s www
+
 
 
 
