@@ -5,9 +5,10 @@
   "homepage": "https://ionicframework.com/",
   "scripts": {
     "ng": "ng",
-    "start": "node server.js",
-    "build": "ng build --prod",
-    "postinstall": "ng build --prod",
+    "start": "serve -s www",
+    "build": "ng build --configuration production --output-path=www --base-href=/",
+    "postinstall": "npm run build",
+    "heroku-postbuild": "npm run build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "lint": "ng lint"
@@ -34,6 +35,7 @@
     "express": "^4.21.2",
     "ionicons": "^7.0.0",
     "rxjs": "~7.8.0",
+    "serve": "^14.2.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.14.2"
   },
@@ -67,5 +69,10 @@
     "karma-jasmine-html-reporter": "~2.1.0",
     "typescript": "^5.4.5"
   },
+  "engines": {
+    "node": "16.x",
+    "npm": "8.x"
+  },
   "description": "An Ionic project"
 }
+
