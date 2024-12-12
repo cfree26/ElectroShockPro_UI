@@ -1,9 +1,1 @@
-web: serve -s www
-
-
-
-
-
-
-
-
+web: npm start
