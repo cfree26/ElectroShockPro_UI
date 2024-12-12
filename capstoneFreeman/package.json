@@ -6,7 +6,7 @@
   "scripts": {
     "ng": "ng",
     "start": "node server.js",
-    "build": "ng build --prod --output-path=www --base-href=/",
+    "build": "ng build --configuration production --output-path=www --base-href=/",
     "postinstall": "ng build --configuration production --output-path=www --base-href=/",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
@@ -68,8 +68,8 @@
     "typescript": "^5.4.5"
   },
   "engines": {
-    "node": ">=16.x <=22.x",
-    "npm": ">=7.x <=10.x"
+    "node": "16.x",
+    "npm": "8.x"
   },
   "description": "An Ionic project"
 }
